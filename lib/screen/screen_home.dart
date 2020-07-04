@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/model/model_quiz.dart';
+import 'package:flutter_quiz_app/screen/screen_quiz.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -44,7 +45,7 @@ class HomeScreenState extends State<HomeScreen> {
               Center(
                 child: Image.asset(
                   'images/quiz.png',
-                  width: width * 0.8,
+                  width: width * 0.4,
                 ),
               ),
               Padding(
@@ -76,12 +77,22 @@ class HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: RaisedButton(
-                        child: Text(
-                          '지금 퀴즈 풀기',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        color: Colors.deepPurple,
-                        onPressed: () {}),
+                      child: Text(
+                        '지금 퀴즈 풀기',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      color: Colors.deepPurple,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => QuizScreen(
+                              quizs: quizs,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               )
