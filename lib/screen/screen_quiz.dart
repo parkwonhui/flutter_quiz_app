@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/model/model_quiz.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -12,7 +13,7 @@ class QuizScreen extends StatefulWidget {
 class _QuizScreenState extends State<QuizScreen> {
   List<int> _answers = [-1, -1, -1];
   List<bool> _answerState = [false, false, false, false]; // 보기가 눌렸는지 기록
-  int _currentIndex; // 현재 보고 있는 문제
+  int _currentIndex = 0; // 현재 보고 있는 문제
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +48,27 @@ class _QuizScreenState extends State<QuizScreen> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: Colors.white),
+      ),
+      child: Column(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.fromLTRB(0, width * 0.024, 0, width * 0.024),
+            child: Text(
+              // _currentIndex인데 왜 에러가 안나지??
+              'Q' + (0 + 1).toString() + '.',
+              style: TextStyle(
+                  fontSize: width * 0.06, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Container(
+              width: width * 0.8,
+              padding: EdgeInsets.only(top: width * 0.012),
+              child: AutoSizeText(quiz.title,
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  style: TextStyle(
+                      fontSize: width * 0.048, fontWeight: FontWeight.bold)))
+        ],
       ),
     );
   }
